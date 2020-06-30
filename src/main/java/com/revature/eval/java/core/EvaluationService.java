@@ -22,7 +22,13 @@ public class EvaluationService {
 
 		public static long toMilesPerHour(double kilometersPerHour) {
 			// TODO Write an implementation for this method declaration
-			return 0;
+			
+			//handling the case where Kilometers are less than 0.
+			if(kilometersPerHour < 0)
+				return -1;
+			else
+				// 1 kilometer is 0.621371 Miles
+				return Math.round(kilometersPerHour*0.621371);
 		}
 
 		/**
@@ -42,7 +48,13 @@ public class EvaluationService {
 		 */
 		public static String printConversion(double kilometersPerHour) {
 			// TODO Write an implementation for this method declaration
-			return null;
+			if(kilometersPerHour < 0)
+				return "Invalid Value";
+			else
+				// 1 kilometer is 0.621371 Miles
+				return kilometersPerHour + "km/h = " + Math.round(kilometersPerHour*0.621371) + " mi/h";
+			
+			
 		}
 	}
 
@@ -66,9 +78,20 @@ public class EvaluationService {
 	 * If the parameter kiloBytes is less than 0 then print the text "Invalid
 	 * Value".
 	 */
-	public String printMegaBytesAndKiloBytes(int XX) {
+	public String printMegaBytesAndKiloBytes(int kiloBytes) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		
+		//taking care of case where kB is less than 0.
+		if(kiloBytes < 0)
+			return "Invalid Value";
+		else
+		{
+			int MB = kiloBytes / 1000;
+			int KB = kiloBytes - (MB * 1024);
+			return kiloBytes + " KB = " + MB + " MB and " + KB + " KB";
+		}
+		
+		
 	}
 
 	/**
@@ -92,7 +115,17 @@ public class EvaluationService {
 	 */
 	public boolean shouldWakeUp(boolean isBarking, int hourOfDay) {
 		// TODO Write an implementation for this method declaration
-		return false;
+		
+		//handling failed input case
+		if((hourOfDay < 0) || (hourOfDay > 23))
+			return false;
+		
+		//Only need to wake up if the dog is barking before 8 or after 22
+		if(((hourOfDay < 8) || (hourOfDay >= 22)) && (isBarking))
+			return true;
+		else {return false;}
+		
+		
 	}
 
 	/**
