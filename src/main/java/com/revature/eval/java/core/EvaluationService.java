@@ -141,7 +141,15 @@ public class EvaluationService {
 	 */
 	public boolean areEqualByThreeDecimalPlaces(double firstNum, double secondNum) {
 		// TODO Write an implementation for this method declaration
-		return false;
+		
+		firstNum *= 1000;
+		secondNum *= 1000;
+		int first = (int) firstNum;
+		int second = (int) secondNum;
+		if (first == second)
+			return true;
+		else
+			return false;
 	}
 
 	/**
@@ -158,7 +166,8 @@ public class EvaluationService {
 
 		public static boolean hasTeen(int x, int y, int z) {
 			// TODO Write an implementation for this method declaration
-			return false;
+			//Using logic.
+			return ((isTeen(x)) || (isTeen(y)) || (isTeen(z)));
 		}
 
 		// We can initialize isTeen method first
@@ -166,7 +175,10 @@ public class EvaluationService {
 
 		public static boolean isTeen(int number) {
 			// TODO Write an implementation for this method declaration
-			return false;
+			if ((number >= 13) && (number <= 19))
+				return true;
+			else
+				return false;
 		}
 	}
 
@@ -187,7 +199,14 @@ public class EvaluationService {
 	 */
 	public String printYearsAndDays(long minutes) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		
+		if(minutes < 0)
+			return "Invalid Value";
+		int years = (int) minutes / 3600 / 24;
+		int days = (int) minutes / 3600;
+		
+		return minutes + " minutes = " + years + " y and " + (days - (years*24)) + " d.";
+		
 	}
 
 	/**
